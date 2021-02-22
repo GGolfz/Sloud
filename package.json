@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server.js",
     "build": "next build",
     "start": "next start"
   },
@@ -11,8 +11,10 @@
     "express": "^4.17.1",
     "helmet": "^4.4.1",
     "next": "10.0.7",
+    "nodemon": "^2.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "socket.io": "^3.1.1"
+    "socket.io": "^3.1.1",
+    "socket.io-client": "^3.1.1"
   }
 }
