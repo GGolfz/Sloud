@@ -11,6 +11,7 @@ const nextHandler = nextApp.getRequestHandler();
 let port = 3000;
 var cloudData = [];
 var currentId = null;
+const adminKey = '123456'
 // Data Template
 
 /*
@@ -31,12 +32,12 @@ io.on("connect", (socket) => {
 	if(currentId){
 		const data = cloudData.find((e) => e.questionId = currentId);
 		const {questionId,questionName} = data;
-		return {
+		io.emit('get-data',{
 			questionId,
 			questionName
-		}
+		})
 	} else {
-		return null
+		io.emit('get-data',null)
 	}
   })
   socket.on("add-question",(data) => {
@@ -49,24 +50,26 @@ io.on("connect", (socket) => {
 			questionName,
 			answer: []
 		})
-		// Emit to all user;
-	} else {
-		// Emit fail
-	}
+
+		io.emit('get-data',{
+			questionId,
+			questionName
+		})
+	} 
   })
   socket.on("answer", (data) => {
 	const {questionId, answer} = data;
 	const findIndex = cloudData.findIndex((d) => d.questionId == questionId);
 	if(findIndex != -1){
 		cloudData[findIndex].answer.push(answer);
-		// Emit to admin;
+		io.emit('get-answer',cloudData[findIndex])
 	} else {
-		// Emit fail
+		io.emit('get-answer',cloudData[cloudData.length - 1] ?? null)
 	}
   })
   socket.on("close", (data) => {
 	cloudData = []
-	// Emit end to all user;
+	io.emit('clear')
   })
 });
 nextApp.prepare().then(() => {
