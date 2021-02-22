@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "build": "next build",
+    "start": "node server.js -p $PORT"
   },
   "dependencies": {
     "express": "^4.17.1",
