@@ -13,8 +13,11 @@ const Home = () => {
     socket.emit("fetch-answer");
     socket.on("get-data", (data) => {
       setQuestion(data);
-      setIsAns(false);
     });
+    socket.on("change-question", (data) => {
+      setQuestion(data);
+      setIsAns(false);
+    })
     socket.on("get-answer", (d) => {
       setResult(d);
     });

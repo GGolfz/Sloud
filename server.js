@@ -63,7 +63,7 @@ io.on("connect", (socket) => {
         answer: [],
       });
 
-      io.emit("get-data", {
+      io.emit("change-question", {
         questionId,
         questionName,
       });
