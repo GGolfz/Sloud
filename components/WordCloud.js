@@ -32,14 +32,13 @@ const WordCloud = ({ words }) => {
     <Fragment>
       <div
         style={{
-          width: "300px",
-          height: "200px",
+          width: "80%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <div style={{ width: "200px", textAlign: "center" }}>
+        <div style={{ width: "95%", textAlign: "center" }}>
           {data?.map((e, index) => {
             return (
               <Fragment>
