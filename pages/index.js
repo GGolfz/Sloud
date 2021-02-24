@@ -34,6 +34,7 @@ const Home = () => {
         questionId: question.questionId,
         answer: answer.toLowerCase().trim(),
       });
+      setAnswer('');
       setIsAns(true);
     }
   };
